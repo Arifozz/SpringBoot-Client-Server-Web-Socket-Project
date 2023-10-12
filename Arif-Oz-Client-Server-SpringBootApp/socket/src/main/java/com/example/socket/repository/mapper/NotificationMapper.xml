@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.socket.repository.NotificationMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.socket.model.entity.Notification">
+        <result column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="SENDER" jdbcType="VARCHAR" property="sender"/>
+        <result column="MESSAGE" jdbcType="VARCHAR" property="message"/>
+        <result column="DATE" jdbcType="VARCHAR" property="date"/>
+    </resultMap>
+
+    <insert id="insert">
+        INSERT INTO notifications (ID, SENDER, MESSAGE, DATE)
+        VALUES (#{id}, #{sender}, #{message}, #{date})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM notifications
+        WHERE ID = #{id}
+    </delete>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT ID, SENDER, MESSAGE, DATE
+        FROM notifications
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT ID, SENDER, MESSAGE, DATE
+        FROM notifications WHERE ID = #{id}
+    </select>
+
+    <select id="deleteOldNotifications" resultMap="BaseResultMap">
+        DELETE FROM notifications
+        WHERE DATE > #{date}
+    </select>
+
+</mapper>

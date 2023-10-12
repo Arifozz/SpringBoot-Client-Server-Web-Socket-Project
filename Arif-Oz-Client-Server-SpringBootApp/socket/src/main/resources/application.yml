@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/messagedata
+    username: root
+    password: 1234
+
+    hikari:
+      connection-timeout: 5000
+      maximum-pool-size: 5
+      idle-timeout: 2

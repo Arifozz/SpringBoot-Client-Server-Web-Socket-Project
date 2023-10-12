@@ -1,0 +1,8 @@
+server:
+  port: 8081
+
+websocket:
+  protocol: ws
+  host: localhost
+  port: 8080
+  endpoint: stomp-endpoint
